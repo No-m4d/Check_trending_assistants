@@ -23,7 +23,7 @@ jobs:
         pip install requests beautifulsoup4
 
     - name: Run script
-      run: python ./path/to/your/script.py
+      run: python ./scrape_trending_chat.py
 
     - name: Commit and push if it's not a fork
       if: github.event_name == 'schedule' && github.repository == github.event.repository.full_name
