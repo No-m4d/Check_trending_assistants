@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 from datetime import date
+import os
 
 url = "https://huggingface.co/chat/assistants/"
 response = requests.get(url)
@@ -14,7 +15,7 @@ leaderboard = soup.find('div', {'class': 'mt-8 grid grid-cols-2 gap-3 sm:gap-5 m
 today = date.today()
 
 # Open the CSV file for appending
-with open('output.csv', 'a', newline='') as file:
+with open(os.path.join(os.getcwd(), 'output.csv'), 'a', newline='') as file:
     writer = csv.writer(file)
     # Write the header only if the file is empty
     if file.tell() == 0:
