@@ -1,8 +1,6 @@
 name: Scrape Leaderboard
 
-on:
-  schedule:
-    - cron: '33 14 * * *'
+on: [push, schedule]
 
 jobs:
   scrape:
