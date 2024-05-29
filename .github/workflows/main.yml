@@ -1,6 +1,6 @@
 name: Scrape Leaderboard
 
-on:[push, workflow_dispatch]
+on: [push, workflow_dispatch]
  # schedule:
  #   - cron: '15 16 * * *'
 
