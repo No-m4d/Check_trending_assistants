@@ -2,7 +2,7 @@ name: Scrape Leaderboard
 
 on:
   schedule:
-    - cron: '32 15 * * *'
+    - cron: '33 14 * * *'
 
 jobs:
   scrape:
