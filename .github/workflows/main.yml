@@ -1,8 +1,8 @@
 name: Scrape Leaderboard
 
-on: 
-  schedule:
-    - cron: '00 09 * * *'
+on: [push, workflow_dispatch]
+ # schedule:
+  #  - cron: '00 00 * * *'
 
 jobs:
   scrape:
@@ -26,7 +26,7 @@ jobs:
       run: python ./scrape_trending_chat.py
 
     - name: Commit and push if it's not a fork
-      if: github.event_name == 'schedule' && github.repository == github.event.repository.full_name
+      #if: github.event_name == 'schedule' && github.repository == github.event.repository.full_name
       run: |
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
