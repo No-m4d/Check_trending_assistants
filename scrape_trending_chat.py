@@ -5,6 +5,8 @@ from datetime import date
 import os
 
 url = "https://huggingface.co/chat/assistants/"
+image_base_url = 'https://huggingface.co'
+
 response = requests.get(url)
 soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -26,6 +28,12 @@ with open(os.path.join(os.getcwd(), 'trending_per_day.csv'), 'a', newline='') as
         # Find the h3 and p elements within each entry
         name_element = entry.find('h3')
         description_element = entry.find('p')
+        # Find images
+        image_element = entry.find('img')
+        # if there is no image, set the image URL to None, otherwise create a URL to the image
+        image_url = None
+        if image_element:
+            image_url = image_base_url + image_element['src']
 
         # Extract the text from these elements
         if name_element and description_element:
@@ -33,4 +41,4 @@ with open(os.path.join(os.getcwd(), 'trending_per_day.csv'), 'a', newline='') as
             description = description_element.get_text()
 
             # Write the name, description, and date to the CSV file
-            writer.writerow([name, description, today])
+            writer.writerow([name, description, today, image_url])
