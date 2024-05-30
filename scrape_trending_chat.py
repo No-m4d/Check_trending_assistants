@@ -21,7 +21,7 @@ with open(os.path.join(os.getcwd(), 'trending_per_day.csv'), 'a', newline='') as
     writer = csv.writer(file)
     # Write the header only if the file is empty
     if file.tell() == 0:
-        writer.writerow(["Name", "Description", "Date"])
+        writer.writerow(["Name", "Description", "Date", "Image"])
 
     # Find all button elements within the leaderboard, each representing an entry
     for entry in leaderboard.find_all('button'):
