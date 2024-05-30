@@ -30,7 +30,9 @@ jobs:
       run: |
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
+        git stash
         git pull --rebase
+        git stash pop
         git add -A
         timestamp=$(date -u)
         git commit -m "Latest data: ${timestamp}" || exit 0
